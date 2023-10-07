@@ -15,6 +15,9 @@ const GlobalStyle = StyleSheet.create({
     marginTop: 17,
     marginBottom: 16,
   },
+  backgroundWhite: {
+    backgroundColor: 'white',
+  },
 });
 
 export default GlobalStyle;

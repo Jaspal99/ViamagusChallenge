@@ -14,11 +14,13 @@ export default function Button(props) {
         props.isDisabled && style.disabled,
         props.title == 'Under' ? style.underColor : style.overColor,
       ]}>
-      <FontAwesomeIcon
-        color="white"
-        size={15}
-        icon={props.title == 'Under' ? faArrowDown : faArrowUp}
-      />
+      {!(props.title === 'Submit my prediction') && (
+        <FontAwesomeIcon
+          color="white"
+          size={15}
+          icon={props.title == 'Under' ? faArrowDown : faArrowUp}
+        />
+      )}
       <Text style={style.title}>{props.title}</Text>
     </Pressable>
   );

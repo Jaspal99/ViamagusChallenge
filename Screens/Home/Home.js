@@ -1,4 +1,4 @@
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, Dimensions} from 'react-native';
 import GlobalStyle from '../../assets/Styles/Global';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
@@ -19,8 +19,26 @@ import {faBitcoin, faViacoin} from '@fortawesome/free-brands-svg-icons';
 import Button from '../../Components/Button/Button';
 import style from './Style';
 import Progress from '../../Components/ProgressBar/Progress';
+import {Modalize} from 'react-native-modalize';
+import {useRef, useState} from 'react';
+import Prediction from '../Prediction/Prediction';
 // import {Image} from 'react-native-svg';
 export default function Home() {
+  console.log('Home');
+  const modalizeRef = useRef(null);
+  const screenHeight = Dimensions.get('window').height;
+  const openBottomSheet = () => {
+    if (modalizeRef.current) {
+      modalizeRef.current.open();
+    }
+  };
+  const [value, setValue] = useState('');
+
+  const handlePredict = val => {
+    setValue(val);
+    openBottomSheet();
+  };
+
   return (
     <View style={GlobalStyle.screenContainer}>
       <View>
@@ -118,8 +136,19 @@ export default function Home() {
           <Text>Whats your prediction</Text>
         </View>
         <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-          <Button color="#452C55" title="Under" />
-          <Button title="Over" />
+          <Button
+            onPress={() => {
+              handlePredict('Under');
+            }}
+            color="#452C55"
+            title="Under"
+          />
+          <Button
+            onPress={() => {
+              handlePredict('Over');
+            }}
+            title="Over"
+          />
         </View>
       </View>
 
@@ -148,6 +177,33 @@ export default function Home() {
           <Text style={{color: '#B5C0C8'}}>123 predicted over</Text>
         </View>
       </View>
+      <Modalize
+        scrollEnabled={false}
+        withReactModal
+        modalHeight={screenHeight * 0.5}
+        ref={modalizeRef}>
+        {/* Content of your bottom sheet */}
+        <View style={bottomSheetStyle.bottomSheetContent}>
+          <Prediction val={value} />
+          {/* Add your additional content here */}
+        </View>
+      </Modalize>
     </View>
   );
 }
+
+const bottomSheetStyle = {
+  button: {
+    // marginTop: 100,
+    backgroundColor: 'rgba(98, 49, 173, 1)',
+    // padding: 16,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  bottomSheetContent: {
+    padding: 16,
+  },
+};

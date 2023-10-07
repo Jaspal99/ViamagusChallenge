@@ -9,7 +9,19 @@ import ProfileTabTitle from '../Components/ProfileTabTitle/ProfileTabTitle';
 import Home from '../Screens/Home/Home';
 import Profile from '../Screens/Profile/Profile';
 // import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faBarChart,
+  faBarsProgress,
+  faChartSimple,
+  faHome,
+  faMagnifyingGlass,
+  faTrophy,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
+const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
@@ -126,12 +138,137 @@ export const ProfileTabsNavigation = () => {
   );
 };
 
+export function MyTabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{header: () => null, headerShown: false}}
+      initialRouteName={Routes.Home}>
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <FontAwesomeIcon
+              icon={faHome}
+              size={size}
+              color={focused ? 'rgba(98, 49, 173, 1)' : color}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 10,
+                color: focused ? 'rgba(98, 49, 173, 1)' : 'black', // Change the label color here
+              }}>
+              Home
+            </Text>
+          ),
+        }}
+        name={Routes.Home}
+        component={Home}
+      />
+
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <FontAwesomeIcon
+              icon={faTrophy}
+              size={size}
+              color={focused ? 'rgba(98, 49, 173, 1)' : color}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 10,
+                color: focused ? 'rgba(98, 49, 173, 1)' : 'black', // Change the label color here
+              }}>
+              League
+            </Text>
+          ),
+        }}
+        name={'League'}
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              size={size}
+              color={focused ? 'rgba(98, 49, 173, 1)' : color}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 10,
+                color: focused ? 'rgba(98, 49, 173, 1)' : 'black', // Change the label color here
+              }}>
+              Research
+            </Text>
+          ),
+        }}
+        name={'Research'}
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <FontAwesomeIcon
+              icon={faChartSimple}
+              size={size}
+              color={focused ? 'rgba(98, 49, 173, 1)' : color}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 10,
+                color: focused ? 'rgba(98, 49, 173, 1)' : 'black', // Change the label color here
+              }}>
+              Leaderboard
+            </Text>
+          ),
+        }}
+        name={'Leaderboard'}
+        component={Home}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <FontAwesomeIcon
+              icon={faUser}
+              size={size}
+              color={focused ? 'rgba(98, 49, 173, 1)' : color}
+            />
+          ),
+          tabBarLabel: ({focused}) => (
+            <Text
+              style={{
+                fontSize: 10,
+                color: focused ? 'rgba(98, 49, 173, 1)' : 'black', // Change the label color here
+              }}>
+              Profile
+            </Text>
+          ),
+        }}
+        name={Routes.Profile}
+        component={Profile}
+      />
+    </Tab.Navigator>
+  );
+}
+
 const MainMenuNavigation = () => {
   return (
-    <Drawer.Navigator screenOptions={{header: () => null, headerShown: false}}>
-      <Drawer.Screen name={Routes.Home} component={Home} />
-      <Drawer.Screen name={Routes.Profile} component={Profile} />
-    </Drawer.Navigator>
+    <Tab.Navigator
+      screenOptions={{header: () => null, headerShown: false}}
+      initialRouteName={Routes.Home}>
+      <Tab.Screen name={Routes.Home} component={Home} />
+      <Tab.Screen name={'League'} component={Home} />
+      <Tab.Screen name={'Research'} component={Home} />
+      <Tab.Screen name={'Leaderboard'} component={Home} />
+      <Tab.Screen name={Routes.Profile} component={Profile} />
+    </Tab.Navigator>
   );
 };
 

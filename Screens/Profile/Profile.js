@@ -20,9 +20,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
+  console.log('====================================');
+  console.log('profile');
+  console.log('====================================');
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
-      <ScrollView contentContainerStyle={{flexGrow: 1}}>
+      <View contentContainerStyle={{flexGrow: 1}}>
         <View>
           <View
             style={[
@@ -31,6 +34,7 @@ const Profile = () => {
                 flexDirection: 'row',
                 margin: 16,
                 justifyContent: 'space-between',
+                backgroundColor: 'white',
               },
             ]}>
             <Image source={require('../../assets/images/knight.png')} />
@@ -47,6 +51,7 @@ const Profile = () => {
               flexDirection: 'column',
               alignItems: 'center',
               paddingHorizontal: 16,
+              backgroundColor: 'white',
             }}>
             <Image
               style={style.profileImage}
@@ -138,10 +143,10 @@ const Profile = () => {
           </View>
         </View>
 
-        <View style={{flex: 1, width: '100%', height: 800}}>
+        <View style={{width: '100%', height: '100%'}}>
           <ProfileTabsNavigation />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

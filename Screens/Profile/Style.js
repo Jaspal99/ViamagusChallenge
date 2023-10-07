@@ -69,7 +69,7 @@ const style = StyleSheet.create({
   border: {
     borderTopWidth: 1,
     borderColor: '#EFF2F6',
-    marginVertical: verticalScale(16),
+    marginTop: verticalScale(16),
     marginHorizontal: horizontalScale(28),
   },
   messageIcon: {

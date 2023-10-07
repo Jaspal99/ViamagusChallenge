@@ -17,6 +17,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet,{BottomSheetRefProps} from './Components/BottomSheet/Bottomsheet';
 import Profile from './Screens/Profile/Profile';
 import { NavigationContainer } from '@react-navigation/native';
+import { MyTabs } from './Navigation/MainNavigation';
 function App() {
   const ref = useRef<BottomSheetRefProps>(null);
 
@@ -30,39 +31,15 @@ function App() {
   }, []);
   return (
     <NavigationContainer>
-    <GestureHandlerRootView style={{ flex: 1 }}>
+      <GestureHandlerRootView>
     <SafeAreaView >
-      {/* <Home /> */}
-      <Profile />
-      {/* <View style={style.container}>
-        <StatusBar style="dark" />
-        <View>
-        <TouchableOpacity style={style.button} onPress={onPress} />
-        </View>
-        <BottomSheet ref={ref}>
-          <View style={{ flex: 1, backgroundColor: 'orange' }} />
-        </BottomSheet>
-      </View> */}
+      <View style={{width:"100%",height:"100%"}}>
+      <MyTabs />
+      </View>
     </SafeAreaView>
     </GestureHandlerRootView>
     </NavigationContainer>
   );
 }
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    height: 50,
-    borderRadius: 25,
-    aspectRatio: 1,
-    backgroundColor: 'orange',
-    opacity: 0.6,
-  },
-});
 
 export default App;
