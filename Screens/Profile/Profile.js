@@ -20,9 +20,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
-  console.log('====================================');
-  console.log('profile');
-  console.log('====================================');
   return (
     <SafeAreaView style={[globalStyle.backgroundWhite, globalStyle.flex]}>
       <View contentContainerStyle={{flexGrow: 1}}>
