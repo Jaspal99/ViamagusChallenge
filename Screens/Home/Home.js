@@ -180,7 +180,7 @@ export default function Home() {
       <Modalize
         scrollEnabled={false}
         withReactModal
-        modalHeight={screenHeight * 0.5}
+        modalHeight={screenHeight * 0.6}
         ref={modalizeRef}>
         {/* Content of your bottom sheet */}
         <View style={bottomSheetStyle.bottomSheetContent}>
