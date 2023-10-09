@@ -18,6 +18,7 @@ import BottomSheet,{BottomSheetRefProps} from './Components/BottomSheet/Bottomsh
 import Profile from './Screens/Profile/Profile';
 import { NavigationContainer } from '@react-navigation/native';
 import { MyTabs } from './Navigation/MainNavigation';
+import GlobalStyle from './assets/Styles/Global';
 function App() {
   const ref = useRef<BottomSheetRefProps>(null);
 
@@ -32,8 +33,8 @@ function App() {
   return (
     <NavigationContainer>
       <GestureHandlerRootView>
-    <SafeAreaView >
-      <View style={{width:"100%",height:"100%"}}>
+    <SafeAreaView style={[GlobalStyle.backgroundWhite]}>
+      <View style={{width:"100%",height:"100%",backgroundColor:'white'}}>
       <MyTabs />
       </View>
     </SafeAreaView>

@@ -24,7 +24,6 @@ import {useRef, useState} from 'react';
 import Prediction from '../Prediction/Prediction';
 // import {Image} from 'react-native-svg';
 export default function Home() {
-  console.log('Home');
   const modalizeRef = useRef(null);
   const screenHeight = Dimensions.get('window').height;
   const openBottomSheet = () => {
@@ -40,7 +39,12 @@ export default function Home() {
   };
 
   return (
-    <View style={GlobalStyle.screenContainer}>
+    <View
+      style={[
+        GlobalStyle.screenContainer,
+        GlobalStyle.backgroundWhite,
+        // {width: '100%', padding: 0, margin: 0, height: '100%'},
+      ]}>
       <View>
         <Text style={GlobalStyle.heading}>Today's Game</Text>
       </View>
