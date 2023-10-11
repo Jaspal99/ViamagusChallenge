@@ -3,7 +3,7 @@ import {View, Animated, StyleSheet} from 'react-native';
 
 const BasicAnimation = () => {
   const [fadeAnim] = useState(new Animated.Value(0));
-
+  console.log('Basic animation renedered');
   useEffect(() => {
     fadeIn(); // Trigger the animation when the component is mounted
   }, []); // Empty dependency array ensures it runs only once when mounted
